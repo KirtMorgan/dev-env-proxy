@@ -9,6 +9,20 @@ sudo apt-get upgrade -y
 # install nginx
 sudo apt-get install nginx -y
 
+# Configuring nginx proxy
+sudo unlink /etc/nginx/sites-enabled/default
+cd /etc/nginx/sites-available
+sudo touch reverse-proxy.conf
+sudo chmod 666 reverse-proxy.conf
+echo "server{
+  listen 80;
+  location / {
+      proxy_pass http://192.168.10.100:3000;
+  }
+}" >> reverse-proxy.conf
+sudo ln -s /etc/nginx/sites-available/reverse-proxy.conf /etc/nginx/sites-enabled/reverse-proxy.conf
+sudo service nginx restart
+
 # install git
 sudo apt-get install git -y
 
@@ -19,7 +33,6 @@ sudo apt-get install nodejs -y
 
 # install pm2
 sudo npm install pm2 -g
-
-# Configuring nginx proxy
-sudo rm /etc/nginx.conf
-sudo ln -s /home/ubuntu/environment/app/nginx.conf /etc/nginx.conf
+cd /home/ubuntu/app
+npm install
+pm2 start app.js

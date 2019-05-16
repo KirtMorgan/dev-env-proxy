@@ -1,0 +1,1 @@
+{"virtualbox":{"/home/ubuntu/app":{"guestpath":"/home/ubuntu/app","hostpath":"/Users/tech-a11/Documents/Eng32/Advanced Bash/starter-code-proxy/app","disabled":false,"__vagrantfile":true},"/vagrant":{"guestpath":"/vagrant","hostpath":"/Users/tech-a11/Documents/Eng32/Advanced Bash/starter-code-proxy","disabled":false,"__vagrantfile":true}}}
